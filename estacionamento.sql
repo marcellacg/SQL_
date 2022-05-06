@@ -94,19 +94,23 @@ ON e.num = d.patio_num
 WHERE d.veiculo_placa LIKE '%6';
 
 /*Liste as placas, os horários de entrada e saída dos veículos de cor vermelha*/
-SELECT p.placa, h.hsEntrada, h.hsSaida
+SELECT p.placa,
+	h.hsEntrada,
+	h.hsSaida
 FROM veiculo p INNER JOIN estaciona h
 ON p.placa = h.veiculo_placa
 WHERE p.cor = 'Branco'
 
 /* Exiba a quantidade de vezes os veículos de cor verde estacionaram */
-SELECT count(e.cod)
-FROM veiculo v INNER JOIN estaciona e
-ON v.placa = e.veiculo_placa
+SELECT count(x.cod)
+FROM veiculo v INNER JOIN estaciona x
+ON v.placa = x.veiculo_placa
 WHERE v.cor = 'Verde';
 
 /*Exiba a placa, o nome dos donos e a descrição dos os modelos de todos os veículos*/
-SELECT p.placa, n.nome, d.desc_2
+SELECT p.placa,
+	n.nome,
+	d.desc_2
 FROM veiculo p INNER JOIN cliente n
 ON p.cliente_cpf = n.cpf
 INNER JOIN modelo d
